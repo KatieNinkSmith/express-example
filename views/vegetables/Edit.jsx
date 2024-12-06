@@ -2,9 +2,10 @@ const React = require("react");
 
 class Edit extends React.Component {
   render() {
+    console.log("Edit");
     return (
       <form
-        action={`/api/vegetables/${this.props.id}?_method=PUT`}
+        action={`/api/vegetables/${this.props.id}/edit?_method=PUT`}
         method="POST"
       >
         Name:{" "}

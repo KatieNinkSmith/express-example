@@ -3,7 +3,10 @@ const React = require("react");
 class Edit extends React.Component {
   render() {
     return (
-      <form action={`/api/fruits/${this.props.id}?_method=PUT`} method="POST">
+      <form
+        action={`/api/fruits/${this.props.id}/edit?_method=PUT`}
+        method="POST"
+      >
         Name:{" "}
         <input type="text" name="name" defaultValue={this.props.fruit.name} />{" "}
         <br />

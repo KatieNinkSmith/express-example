@@ -127,8 +127,9 @@ app.get("/api/fruits/seed", async (req, res) => {
 });
 // localhost:5052/api/vegetables/seed this route gives and empty object
 app.get("/api/vegetables/seed", async (req, res) => {
+  console.log("boo");
   try {
-    await Vegetables.create([
+    await Vegetable.create([
       {
         name: "carrot",
         color: "orange",
@@ -218,7 +219,7 @@ app.delete("/api/vegetables/:id", async (req, res) => {
 
 // UPDATE
 // localhost:5052/fruits/:id/edit this workds and displays Edit view
-app.put("/fruits/:id/edit", async (req, res) => {
+app.put("/api/fruits/:id/edit", async (req, res) => {
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
   } else {
@@ -238,7 +239,8 @@ app.put("/fruits/:id/edit", async (req, res) => {
 });
 
 // localhost:5052/vegetables/:id/edit this route does not work again no id yet to try with
-app.put("/vegetables/:id/edit", async (req, res) => {
+app.put("/api/vegetables/:id/edit", async (req, res) => {
+  console.log(req.params.id);
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
   } else {
@@ -289,7 +291,7 @@ app.post("/api/vegetables", async (req, res) => {
 });
 
 // E - Edit
-// localhost:5052/fruits/:id/edit this route works put/get
+// localhost:5052/fruits/:id/edit this route works*******
 app.get("/fruits/:id/edit", async (req, res) => {
   try {
     const foundFruit = await Fruit.findById(req.params.id);
