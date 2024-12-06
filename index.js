@@ -258,8 +258,7 @@ app.put("/vegetables/:id/edit", async (req, res) => {
 });
 
 // CREATE
-// localhost:5052/api/fruits this works but we already have a /api/fruits
-//  so trying to understand which one is working
+// localhost:5052/api/fruits this route works realized the difference get/post
 app.post("/api/fruits", async (req, res) => {
   //   console.log(req.body);
   if (req.body.readyToEat === "on") {
@@ -274,7 +273,7 @@ app.post("/api/fruits", async (req, res) => {
     res.status(400).send(err);
   }
 });
-// localhost:5052/api/vegetables this route shows same empty array as other /api/vegetables
+// localhost:5052/api/vegetables this route shows same empty array
 app.post("/api/vegetables", async (req, res) => {
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
@@ -290,7 +289,7 @@ app.post("/api/vegetables", async (req, res) => {
 });
 
 // E - Edit
-// localhost:5052/fruits/:id/edit again repeated from put
+// localhost:5052/fruits/:id/edit this route works put/get
 app.get("/fruits/:id/edit", async (req, res) => {
   try {
     const foundFruit = await Fruit.findById(req.params.id);
@@ -313,7 +312,7 @@ app.get("/vegetables/:id/edit", async (req, res) => {
 });
 
 // SHOW
-// localhost:5052/api/fruits/:id same same from delete
+// localhost:5052/api/fruits/:id same same from get/delete
 app.get("/api/fruits/:id", async (req, res) => {
   try {
     const foundFruit = await Fruit.findById(req.params.id);
