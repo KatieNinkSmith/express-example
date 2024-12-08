@@ -40,7 +40,9 @@ router.get("/seed", async (req, res) => {
 });
 
 // INDEX
+// localhost:5052/api/fruits this route works
 router.get("/", async (req, res) => {
+  console.log("its working");
   try {
     const foundFruits = await Fruit.find({});
     res.status(200).json(foundFruits);
@@ -50,6 +52,7 @@ router.get("/", async (req, res) => {
 });
 
 // DELETE
+// localhost:5052/api/fruits/:id this route works gives single id
 router.delete("/:id", async (req, res) => {
   try {
     const deletedFruit = await Fruit.findByIdAndDelete(req.params.id);
@@ -61,8 +64,8 @@ router.delete("/:id", async (req, res) => {
 });
 
 // UPDATE
-// put replaces a resource
-router.put("/:id", async (req, res) => {
+// localhost:5052/fruits/:id/edit this workds and displays Edit view
+router.put("/:id/edit", async (req, res) => {
   if (req.body.readyToEat === "on") {
     req.body.readyToEat = true;
   } else {
@@ -82,6 +85,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // CREATE
+// localhost:5052/api/fruits this route works realized the difference get/post
 router.post("/", async (req, res) => {
   console.log(req.body);
   if (req.body.readyToEat === "on") {
@@ -98,6 +102,7 @@ router.post("/", async (req, res) => {
 });
 
 // SHOW
+// localhost:5052/api/fruits/:id same same from get/delete
 router.get("/:id", async (req, res) => {
   try {
     const foundFruit = await Fruit.findById(req.params.id);
